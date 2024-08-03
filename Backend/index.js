@@ -4,8 +4,8 @@ import mongoose from 'mongoose';
 import cors from 'cors'
 import path from 'path'
 
-import bookRoute from './Backend/routes/book.route.js'
-import userRoute from './Backend/routes/user.route.js'
+import bookRoute from './routes/book.route.js'
+import userRoute from './routes/user.route.js'
 
 const app = express();
 
