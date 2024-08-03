@@ -1,0 +1,36 @@
+version: 1
+
+services:
+  - type: web
+    name: bookstore-backend
+    env: node
+    plan: free
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    detectChangesFrom:
+      - backend
+    deploy:
+      branch: main
+    repo: https://github.com/anishkr2842003/Book-Store.git
+    build:
+      commands:
+        - cd Backend
+        - npm install
+        - npm run build
+
+  - type: static
+    name: bookstore-frontend
+    env: static
+    plan: free
+    buildCommand: "npm run build"
+    publishDir: "Frontend/build"
+    detectChangesFrom:
+      - frontend
+    deploy:
+      branch: main
+    repo: https://github.com/anishkr2842003/Book-Store.git
+    build:
+      commands:
+        - cd Frontend
+        - npm install
+        - npm run build
