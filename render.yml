@@ -10,7 +10,7 @@ services:
     detectChangesFrom:
       - backend
     deploy:
-      branch: main
+      branch: master
     repo: https://github.com/anishkr2842003/Book-Store.git
     build:
       commands:
@@ -27,7 +27,7 @@ services:
     detectChangesFrom:
       - frontend
     deploy:
-      branch: main
+      branch: master
     repo: https://github.com/anishkr2842003/Book-Store.git
     build:
       commands:
