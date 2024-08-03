@@ -12,11 +12,6 @@ services:
     deploy:
       branch: master
     repo: https://github.com/anishkr2842003/Book-Store.git
-    build:
-      commands:
-        - cd Backend
-        - npm install
-        - npm start
 
   - type: static
     name: bookstore-frontend
