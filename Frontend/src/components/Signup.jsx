@@ -1,17 +1,40 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FaUserAlt } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
+import { Link, useNavigate } from "react-router-dom";
 
 function Signup() {
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    reset();
+    const userInfo = data;
+ 
+
+  await axios.post('http://localhost:4001/user/signup', userInfo).then((res)=>{
+    if(res.data){
+      // console.log(res.data)
+      toast.success('Account Created Successfully')
+      navigate('/')
+    }
+    localStorage.setItem("user", JSON.stringify(res.data.user))
+  }).catch((err)=>{
+    if(err.response){
+      // alert('Error : '+ err.response.data.message)
+      toast.error(err.response.data.message);
+    }
+  })
+};
 
   return (
     <>
@@ -39,7 +62,7 @@ function Signup() {
               <label className="input  w-[100%] input-bordered flex items-center gap-2 mt-5 dark:bg-slate-900 dark:text-white border dark:border-white border-black">
                 <MdEmail />
                 <input
-                  type="text"
+                  type="email"
                   className="grow  dark:bg-slate-900 dark:text-white dark:border-white"
                   placeholder="Enter your email"
                   {...register("email", { required: true })}
@@ -54,7 +77,7 @@ function Signup() {
               <label className="input  w-[100%] input-bordered flex items-center gap-2 mt-5 dark:bg-slate-900 dark:text-white border dark:border-white border-black">
                 <RiLockPasswordFill />
                 <input
-                  type="text"
+                  type="password"
                   className="grow  dark:bg-slate-900 dark:text-white dark:border-white"
                   placeholder="Enter your password"
                   {...register("password", { required: true })}
@@ -70,12 +93,12 @@ function Signup() {
                 <button className="py-2 px-5 bg-secondary text-white rounded-lg hover:bg-pink-400">
                   Sign Up
                 </button>
-                <a
-                  href="/"
+                <Link
+                  to={"/"}
                   className="link link-primary text-sm dark:text-white"
                 >
                   Already have an account. LogIn
-                </a>
+                </Link>
               </div>
             </form>
           </div>

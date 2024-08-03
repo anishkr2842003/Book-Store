@@ -1,76 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Cards from "./Cards";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function Course() {
-  const bookData = [
-    {
-      id: 1,
-      name: "Story",
-      title: "A crow",
-      price: 0,
-      category: "Free",
-      description:
-        "Read this book free. share this book with your friends also. this is free for everyone. share this website with your friends to increase knowledge. learn new thing everyday from here. don't forget to visit again. Thank you",
-      image:
-        "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?t=st=1722557588~exp=1722561188~hmac=e640c9c48576b14c10dcc2a6e12ab95a5c9cde9d004ce2df5ef367e101031ccc&w=740",
-    },
-    {
-      id: 2,
-      name: "Food Book",
-      title: "Delicious Food",
-      price: 100,
-      category: "Paid",
-      description:
-        "Read this book free. share this book with your friends also. this is free for everyone. share this website with your friends to increase knowledge. learn new thing everyday from here. don't forget to visit again. Thank you",
-      image:
-        "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?t=st=1722557588~exp=1722561188~hmac=e640c9c48576b14c10dcc2a6e12ab95a5c9cde9d004ce2df5ef367e101031ccc&w=740",
-    },
-    {
-      id: 3,
-      name: "Story",
-      title: "World of Animal",
-      description:
-        "Read this book free. share this book with your friends also. this is free for everyone. share this website with your friends to increase knowledge. learn new thing everyday from here. don't forget to visit again. Thank you",
-      price: 0,
-      category: "Free",
-      image:
-        "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?t=st=1722557588~exp=1722561188~hmac=e640c9c48576b14c10dcc2a6e12ab95a5c9cde9d004ce2df5ef367e101031ccc&w=740",
-    },
-    {
-      id: 4,
-      name: "Story",
-      title: "A king and There Castle",
-      description:
-        "Read this book free. share this book with your friends also. this is free for everyone. share this website with your friends to increase knowledge. learn new thing everyday from here. don't forget to visit again. Thank you",
-      price: 150,
-      category: "Paid",
-      image:
-        "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?t=st=1722557588~exp=1722561188~hmac=e640c9c48576b14c10dcc2a6e12ab95a5c9cde9d004ce2df5ef367e101031ccc&w=740",
-    },
-    {
-      id: 5,
-      name: "Story",
-      title: "King of Atlantis",
-      description:
-        "Read this book free. share this book with your friends also. this is free for everyone. share this website with your friends to increase knowledge. learn new thing everyday from here. don't forget to visit again. Thank you",
-      price: 0,
-      category: "Free",
-      image:
-        "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?t=st=1722557588~exp=1722561188~hmac=e640c9c48576b14c10dcc2a6e12ab95a5c9cde9d004ce2df5ef367e101031ccc&w=740",
-    },
-    {
-      id: 6,
-      name: "Programming Book",
-      title: "Learn Python",
-      description:
-        "Read this book free. share this book with your friends also. this is free for everyone. share this website with your friends to increase knowledge. learn new thing everyday from here. don't forget to visit again. Thank you",
-      price: 59,
-      category: "Paid",
-      image:
-        "https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books-illustration_23-2149341898.jpg?t=st=1722557588~exp=1722561188~hmac=e640c9c48576b14c10dcc2a6e12ab95a5c9cde9d004ce2df5ef367e101031ccc&w=740",
-    },
-  ];
+
+  const[bookData,setBookData] = useState([]);
+  useEffect(()=>{
+    const getBook = async()=>{
+      try {
+        const res = await axios.get('http://localhost:4001/book');
+        setBookData(res.data)
+        // console.log(res)
+      } catch (error) {
+        console.log('Error : ', error)
+      }
+    }
+    getBook();
+  },[])
 
   return (
     <>

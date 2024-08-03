@@ -10,6 +10,7 @@ function Cards({book}) {
             <img
               src={book.image}
               alt="Shoes"
+              className="h-[380px] w-[480px] object-cover"
             />
           </figure>
           <div className="card-body">
@@ -17,7 +18,7 @@ function Cards({book}) {
               {book.title}
               <div className="badge badge-secondary">{book.name}</div>
             </h2>
-            <p>{book.description.split(" ", 15).join(" ")}...</p>
+            <p>{book.description.substring(0,100)}...</p>
             <div className="card-actions justify-between">
               <div className="badge badge-outline py-3 px-5 hover:bg-pink-500 hover:text-white duration-300 transition-all ease-in-out"> {book.price > 0 ? '₹'+book.price : 'Free'}</div>
               <div className="badge badge-outline py-3 px-5 hover:bg-pink-500 hover:text-white duration-300 transition-all ease-in-out">{book.price > 0 ? "Buy Now" : 'Read'}</div>

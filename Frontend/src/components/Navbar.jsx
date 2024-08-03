@@ -3,42 +3,50 @@ import { FaUserAlt } from "react-icons/fa";
 import ThemeController from "./ThemeController";
 import { Link } from "react-router-dom";
 import Login from "./Login";
-
+import { useAuth } from "../context/AuthProvider";
+import { FaRegUser } from "react-icons/fa";
+import Logout from "../components/Logout";
 
 function Navbar() {
+  const [authUser, setAuthUser] = useAuth();
+  // console.log(authUser)
 
-  const [sticky,setSticky] = useState(false);
+  const [sticky, setSticky] = useState(false);
 
-  const handleScroll = ()=>{
-    if(scrollY>70){
-      setSticky(true)
-    }else{
-      setSticky(false)
+  const handleScroll = () => {
+    if (scrollY > 70) {
+      setSticky(true);
+    } else {
+      setSticky(false);
     }
-  }
-  window.addEventListener('scroll', handleScroll)
-  
+  };
+  window.addEventListener("scroll", handleScroll);
 
   const navItems = (
     <>
       <li className="">
-        <Link to='/'>Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <Link to='/courses'>Course</Link>
+        <Link to="/books">Books</Link>
       </li>
       <li>
-        <Link to='#'>Contact</Link>
+        <Link to="#">Contact</Link>
       </li>
       <li>
-        <Link to='#'>About</Link>
+        <Link to="#">About</Link>
       </li>
     </>
   );
 
   return (
     <>
-      <div className={`max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-900 dark:text-white fixed top-0 left-0 right-0 ${sticky && 'shadow-md bg-zinc-50 duration-300 transition-all ease-in-out z-50'}`}>
+      <div
+        className={`max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-900 dark:text-white fixed top-0 left-0 right-0 ${
+          sticky &&
+          "shadow-md bg-zinc-50 duration-300 transition-all ease-in-out z-50"
+        }`}
+      >
         <div className="navbar ">
           <div className="navbar-start">
             <div className="dropdown ">
@@ -69,7 +77,9 @@ function Navbar() {
                 {navItems}
               </ul>
             </div>
-            <a href="/" className="text-2xl font-bold cursor-pointer">Book Store</a>
+            <a href="/" className=" text md:text-2xl font-bold cursor-pointer">
+              Book Store
+            </a>
           </div>
           <div className="navbar-end space-x-3">
             <div className="navbar-center hidden lg:flex md:flex-row">
@@ -80,7 +90,10 @@ function Navbar() {
               <label className="border px-3 py-2 rounded-lg flex items-center gap-2 outline-none">
                 <input
                   type="text"
-                  className={`grow outline-none ${sticky && 'bg-zinc-50 duration-300 transition-all ease-in-out'} dark:bg-slate-900 bg-transparent`}
+                  className={`grow outline-none ${
+                    sticky &&
+                    "bg-zinc-50 duration-300 transition-all ease-in-out"
+                  } dark:bg-slate-900 bg-transparent`}
                   placeholder="Search"
                   name="search"
                 />
@@ -98,14 +111,33 @@ function Navbar() {
                 </svg>
               </label>
             </div>
-            <ThemeController/>
+            <ThemeController />
             {/* Login & Logout Button */}
-            <div>
-              <button onClick={()=>document.getElementById('my_modal_3').showModal()} className="btn flex-nowrap dark:text-white dark:bg-slate-900">
-                <FaUserAlt className="dark:text-white"/>
-                Login
-              </button>
-              <Login/>
+            <div className="flex gap-3">
+              {authUser ? (
+                <Logout />
+              ) : (
+                <button
+                  onClick={() =>
+                    document.getElementById("my_modal_3").showModal()
+                  }
+                  className="btn btn-xs md:btn flex-nowrap dark:text-white dark:bg-slate-900"
+                >
+                  <FaUserAlt className="dark:text-white" />
+                  Login
+                </button>
+              )}
+              {
+                authUser ? '' : (<Link to={'/signup'}
+                  className="btn btn-xs btn-secondary md:btn flex-nowrap dark:text-white dark:bg-slate-900"
+                >
+                  <FaRegUser  className="dark:text-white text-white" />
+                  <span className="text-white">Signup</span>
+                </Link>)
+              }
+              
+
+              <Login />
             </div>
           </div>
         </div>

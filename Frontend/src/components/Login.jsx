@@ -1,16 +1,44 @@
+import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordFill } from "react-icons/ri";
+import { useAuth } from "../context/AuthProvider";
 
 function Login() {
+
+  const [authUser,setAuthUser] = useAuth()
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 // All form data receive in data variable here :
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async(data) => {
+    const userInfo = data;
+    reset();
+    await axios.post('http://localhost:4001/user/login', userInfo).then((res)=>{
+      if(res.data){
+        
+        document.getElementById("my_modal_3").close()
+        toast.success('Loggedin Successfully');
+        // console.log(JSON.stringify(res.data.user))
+        setAuthUser(data)
+      }
+      localStorage.setItem("user", JSON.stringify(res.data.user))
+      
+      // window.location.reload()
+    }).catch((err)=>{
+      if(err.response){
+        // alert('Error : '+ err.response.data.message)
+        document.getElementById("my_modal_3").close()
+        toast.error(err.response.data.message);
+      }
+    })
+
+  };
 
   return (
     <>
