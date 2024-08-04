@@ -21,7 +21,7 @@ function Signup() {
     const userInfo = data;
  
 
-  await axios.post('http://localhost:4001/user/signup', userInfo).then((res)=>{
+  await axios.post('https://book-store-krwj.onrender.com/user/signup', userInfo).then((res)=>{
     if(res.data){
       // console.log(res.data)
       toast.success('Account Created Successfully')
