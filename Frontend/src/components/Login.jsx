@@ -19,9 +19,12 @@ function Login() {
   const onSubmit = async(data) => {
     const userInfo = data;
     reset();
+
+    const loading = toast.loading('Logging in...')
     await axios.post('https://book-store-krwj.onrender.com/user/login', userInfo).then((res)=>{
       if(res.data){
         
+        toast.dismiss(loading)
         document.getElementById("my_modal_3").close()
         toast.success('Loggedin Successfully');
         // console.log(JSON.stringify(res.data.user))

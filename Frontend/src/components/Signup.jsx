@@ -19,11 +19,12 @@ function Signup() {
   const onSubmit = async (data) => {
     reset();
     const userInfo = data;
- 
+    const loading = toast.loading('Creating account...');
 
   await axios.post('https://book-store-krwj.onrender.com/user/signup', userInfo).then((res)=>{
     if(res.data){
-      // console.log(res.data)
+      
+      toast.dismiss(loading)
       toast.success('Account Created Successfully')
       navigate('/')
     }
