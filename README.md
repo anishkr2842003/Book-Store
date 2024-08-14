@@ -1,13 +1,6 @@
 # Book-Store
 
-[![Visit My Website](https://img.icons8.com/?size=2x&id=85623&format=png)](https://yourwebsiteurl.com)
-
-[![Visit My Website](https://img.icons8.com/?size=2x&id=85623&format=png)](https://yourwebsiteurl.com)
-
-[<img src="https://img.icons8.com/?size=2x&id=85623&format=png" width="20px"> Visit My Website](https://yourwebsiteurl.com)
-
-[![Visit My Website](https://img.icons8.com/?size=2x&id=85623&format=png)](https://yourwebsiteurl.com)
-
+[<img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/64/000000/external-visit-url-flatart-icons-flat-flatarticons.png" width="20px"> Visit My Website](https://yourwebsiteurl.com)
 
 A simple MERN stack application for managing and viewing books. This project was created as a learning exercise in React and the MERN stack. It allows users to sign up, log in, and explore a selection of books, with administrative controls for managing book data.
 
