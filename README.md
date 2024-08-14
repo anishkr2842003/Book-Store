@@ -1,6 +1,6 @@
 # Book-Store
 
-[<img src="https://img.icons8.com/external-flatart-icons-flat-flatarticons/64/000000/external-visit-url-flatart-icons-flat-flatarticons.png" width="20px"> Visit My Website](https://yourwebsiteurl.com)
+[![Visit My Website](https://img.shields.io/badge/Visit-My%20Website-blue?style=for-the-badge&logo=internet-explorer)]([https://yourwebsiteurl.com](https://anish-book-store.netlify.app/))
 
 A simple MERN stack application for managing and viewing books. This project was created as a learning exercise in React and the MERN stack. It allows users to sign up, log in, and explore a selection of books, with administrative controls for managing book data.
 
