@@ -29,19 +29,21 @@ A simple MERN stack application for managing and viewing books. This project was
 
 | Field   | Type   | Description             |
 |---------|--------|-------------------------|
-| username| String | The user's name          |
+| name    | String | The user's name          |
 | email   | String | The user's email address |
 | password| String | The user's password      |
 
 ### Book
 
-| Field     | Type   | Description                |
-|-----------|--------|----------------------------|
-| name      | String | The name of the book        |
-| imageUrl  | String | The URL of the book's image |
-| price     | Number | The price of the book       |
-| category  | String | The category of the book    |
-| other     | Mixed  | Any other relevant details  |
+| Field      | Type   | Description                |
+|------------|--------|----------------------------|
+| id         | Number | The id of the book        |
+| name       | String | The name of the book        |
+| title      | String | The title of the book        |
+| imageUrl   | String | The URL of the book's image |
+| price      | Number | The price of the book       |
+| category   | String | The category of the book    |
+| description| String  | The decription about book  |
 
 ## How It Works
 
