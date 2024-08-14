@@ -91,6 +91,52 @@ A simple MERN stack application for managing and viewing books. This project was
 - Add features to allow users to read books online.
 - Improve the UI/UX for a more seamless user experience.
 
+### API Endpoints
+
+### Login API
+- **URL**: [https://book-store-krwj.onrender.com/user/login](https://book-store-krwj.onrender.com/user/login)
+- **Method**: POST
+- **Request Body**:
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "yourpassword"
+  }
+- **Description**: Registers a new user with their name, email, and password.
+
+### Signup API
+- **URL**: [https://book-store-krwj.onrender.com/user/signup](https://book-store-krwj.onrender.com/user/signup)
+- **Method**: POST
+- **Request Body**:
+  ```json
+  {
+    "name": "Your Name",
+    "email": "user@example.com",
+    "password": "yourpassword"
+  }
+  ```
+- **Description**: Registers a new user with their name, email, and password.
+
+### Books API
+- **URL**: [https://book-store-krwj.onrender.com/book](https://book-store-krwj.onrender.com/book)
+- **Method**: GET
+- **Response**:
+  ```json
+  [
+    {
+      "id": "1",
+      "name": "Book Name",
+      "title": "Book Title",
+      "imageUrl": "https://example.com/image.jpg",
+      "price": 19.99,
+      "category": "Category",
+      "description": "Description of the book"
+    }
+  ]
+  ```
+- **Description**: Retrieves a list of all books with their details.
+
+
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE] file for details.
